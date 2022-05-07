@@ -7,14 +7,12 @@ public class TestInstructor {
     @Test
     public void testImplementation(){
         Instructor instructor = new Instructor(1234, "Yev");
-        boolean answer = instructor instanceof ITeacher;
-        Assert.assertTrue(answer);
+        Assert.assertTrue(instructor instanceof ITeacher);
     }
     @Test
     public void testInheritance(){
         Instructor instructor = new Instructor(1234, "Yev");
-        boolean answer = instructor instanceof Person;
-        Assert.assertTrue(answer);
+        Assert.assertTrue(instructor instanceof Person);
     }
     @Test
     public void testTeach(){
@@ -31,10 +29,7 @@ public class TestInstructor {
         Student student = new Student(2, "Yev Jr");
         Student student1 = new Student(3, "Yev III");
         Student student2 = new Student(4, "Yev IIII");
-        Student[] students = new Student[3];
-        students[0] = student;
-        students[1] = student1;
-        students[2] = student2;
+        Student[] students = new Student[]{student,student1,student2};
 
         double expected = 15.0;
 

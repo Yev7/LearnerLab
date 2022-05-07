@@ -13,9 +13,9 @@ public class Instructor extends Person implements ITeacher{
 
     @Override
     public void lecture(ILearner[] learners, double numberOfHours) {
-        double hoursPerLearner = numberOfHours / learners.length;
+        double numberOfHoursPerLearner = numberOfHours / learners.length;
         for (ILearner learner: learners){
-            learner.learn(hoursPerLearner);
+            learner.learn(numberOfHoursPerLearner);
         }
     }
 }
