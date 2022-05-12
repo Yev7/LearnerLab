@@ -4,18 +4,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class People implements Iterable{
-    public People(List<Person> personList) {
-        this.personList = personList;
+public abstract class People<E extends Person> implements Iterable<E>{
+    List<E> personList;
+    public People() {
+        personList = new ArrayList<E>();
     }
 
-    List<Person> personList = new ArrayList<>();
-
-    public void add(Person person){
+    public void add(E person){
         personList.add(person);
     }
-    public Person findById(Long id){
-        for (Person i: personList) {
+    public E findById(Long id){
+        for (E i: personList) {
             Long actualId = i.getId();
             if (actualId.equals(id)){
                 return i;
@@ -23,16 +22,16 @@ public class People implements Iterable{
         }return null;
 
     }
-    public boolean contains(Person person){
+    public boolean contains(E person){
         return personList.contains(person);
     }
-    public void remove(Person person){
+    public void remove(E person){
         personList.remove(person);
     }
     public void removeId(Long id){
         for (Person i: personList){
             if (i.getId() == id){
-                remove((Person) i);
+                remove((E) i);
             }
         }
     }
@@ -42,12 +41,20 @@ public class People implements Iterable{
     public int count(){
         return personList.size();
     }
-    public Person[] toArray(){
-        return (Person[]) personList.toArray(new Person[0]);
+    public E[] toArray(){
+        return (E[]) personList.toArray();
+    }
+
+    public List<E> getPersonList() {
+        return personList;
+    }
+
+    public void setPersonList(List<E> personList) {
+        this.personList = personList;
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<E> iterator() {
         return personList.iterator();
     }
 }
